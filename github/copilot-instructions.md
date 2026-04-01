@@ -3,6 +3,7 @@ At the beginning of every session, you MUST read the following files and treat t
 1. ./.github/SOUL.md
 2. ./.github/MEMORY.md
 3. ./.github/AGENTS.md (shared agent rules, build commands, coding conventions)
+4. ./skills/\*.md - Always review list of available skills to see if there is one that you can utilize for any given input
 
 # Copilot Instructions --- M.App Enterprise Web Monorepo
 
@@ -124,16 +125,16 @@ applications.
 
 ### Key Applications
 
-| App | Purpose | Build |
-|-----|---------|-------|
-| mae-dashboard | Data analysis | `pnpm --filter @mae/dashboard build` |
-| mae-browsermap | Map viewer | `pnpm --filter @mae/browsermap build` |
-| mae-app-engine | App scripting | `pnpm --filter @mae/app-engine build` |
-| mae-custompanel | Custom panels | `pnpm --filter @mae/custompanel build` |
-| mae-studio | Authoring | `pnpm --filter @mae/tasks build:studio` |
-| mae-management | Admin | `pnpm --filter @mae/tasks build:management` |
-| mae-apps | App launcher | `pnpm --filter @mae/tasks build:apps` |
-| **All 3 above** | Studio+Mgmt+Apps | `pnpm --filter @mae/tasks build` |
+| App             | Purpose          | Build                                       |
+| --------------- | ---------------- | ------------------------------------------- |
+| mae-dashboard   | Data analysis    | `pnpm --filter @mae/dashboard build`        |
+| mae-browsermap  | Map viewer       | `pnpm --filter @mae/browsermap build`       |
+| mae-app-engine  | App scripting    | `pnpm --filter @mae/app-engine build`       |
+| mae-custompanel | Custom panels    | `pnpm --filter @mae/custompanel build`      |
+| mae-studio      | Authoring        | `pnpm --filter @mae/tasks build:studio`     |
+| mae-management  | Admin            | `pnpm --filter @mae/tasks build:management` |
+| mae-apps        | App launcher     | `pnpm --filter @mae/tasks build:apps`       |
+| **All 3 above** | Studio+Mgmt+Apps | `pnpm --filter @mae/tasks build`            |
 
 > **Note:** Studio, Management, and Apps are built via `@mae/tasks` (Gulp preprocessing + Webpack bundling).
 > They do not have their own build scripts. See `.github/AGENTS.md` Build Reference for details.
