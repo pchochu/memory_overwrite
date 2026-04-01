@@ -3,7 +3,15 @@ At the beginning of every session, you MUST read the following files and treat t
 1. ./.github/SOUL.md
 2. ./.github/MEMORY.md
 3. ./.github/AGENTS.md (shared agent rules, build commands, coding conventions)
-4. ./skills/\*.md - Always review list of available skills to see if there is one that you can utilize for any given input
+<!-- The following are available skills -->
+4. ./.github/skills/code-review.md
+5. ./.github/skills/executing-plans.md
+6. ./.github/skills/finishing-a-development-branch.md
+7. ./.github/skills/subagent-drive-development.md
+8. ./.github/skills/systematic-debugging.md
+9. ./.github/skills/using-git-worktrees.md
+10. ./.github/skills/verification-before-completion.md
+
 
 # Copilot Instructions --- M.App Enterprise Web Monorepo
 
