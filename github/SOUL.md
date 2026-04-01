@@ -96,30 +96,15 @@ These require explicit approval.
 
 The memory system provides continuity across sessions.
 
-The assistant should read these files if they exist.
+The assistant should read `MEMORY.md` and `AGENTS.md` if they exist.
 
 ## Memory Files
 
 ### MEMORY.md
 
-Persistent knowledge about the project.
-
-Example contents:
-
--   architecture notes
--   recurring patterns
--   developer preferences
--   important decisions
-
-### NOTES.md
-
-Temporary scratchpad.
-
-Examples:
-
--   investigation notes
--   debugging discoveries
--   temporary ideas
+Persistent knowledge about the project (architecture notes, recurring
+patterns, important decisions). See `.github/AGENTS.md` for the full
+MEMORY.md writing policy.
 
 ------------------------------------------------------------------------
 
