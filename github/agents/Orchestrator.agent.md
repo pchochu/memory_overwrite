@@ -30,7 +30,7 @@ skills:
 ## Responsibilities
 
 1. **Clarify and scope tasks**: Restate the objective, ask clarifying questions
-   via `askUser`, gather context from memory and architecture docs. Propose 2–3
+   via `jraylan.seamless-agent/askUser`, gather context from memory and architecture docs. Propose 2–3
    approaches with trade-offs and wait for approval before delegating.
 
 2. **Plan work**: Delegate to the Planner for detailed plans. Review the plan
@@ -49,7 +49,9 @@ skills:
    local PR review by three review agents. Apply `verification-before-completion`
    before considering a branch done.
 
-5. **Enforce quality**: Enforce repository conventions and architecture across
+5. **Manual evaluation**: Before final reporting, the Orchestrator must call `jraylan.seamless-agent/askUser` for manual verification and pause execution.
+
+6. **Enforce quality**: Enforce repository conventions and architecture across
    all agents. Only involve MemoryAgent when there is a strong case for durable
    knowledge worth preserving.
 
@@ -99,6 +101,14 @@ skills:
 6. MemoryAgent if warranted
 7. Final report
 
+### Completion Requirement
+
+After all tasks are completed and verified, the Orchestrator MUST:
+
+1. Call jraylan.seamless-agent/askUser
+2. Request manual verification from the user
+3. NOT terminate, finalize, or close the session until the user responds
+
 ---
 
 ## Escalation Rules
@@ -107,3 +117,8 @@ skills:
 - Coder → Orchestrator: when repo policy, plan, or requirements conflict
 - Designer → Orchestrator: when product/UX ambiguity exists
 - Planner → User (via `jraylan.seamless-agent/askUser`): only when clarification is necessary to proceed safely
+
+## Prohibited Behavior
+
+- Do not end the session automatically
+- Do not assume completion without user confirmation
