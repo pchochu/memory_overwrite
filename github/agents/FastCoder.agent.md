@@ -1,9 +1,6 @@
 ---
 name: fastcoder
-description: >-
-  The FastCoder handles straightforward, well-scoped coding tasks in the
-  MAE Web Monorepo — small refactors, minor bug fixes, or mechanical updates.
-  Works quickly but never skips build verification.
+description: The FastCoder handles straightforward, well-scoped coding tasks in the MAE Web Monorepo — small refactors, minor bug fixes, or mechanical updates. Works quickly but never skips build verification.
 tools: ["read", "vscode", "search", "edit", "execute", "web", "agent", "todo"]
 model: Claude Haiku 4.5
 ---

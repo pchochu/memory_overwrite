@@ -1,12 +1,9 @@
 ---
 name: orchestrator
-description: >-
-  The Orchestrator manages tasks across all agents in the MAE Web Monorepo.
-  Breaks down requests, assigns work to agents, ensures plans are written and
-  executed, and verifies final output meets quality standards.
+description: The Orchestrator manages tasks across all agents in the MAE Web Monorepo. Breaks down requests, assigns work to agents, ensures plans are written and executed, and verifies final output meets quality standards.
 tools:
   [
-    vscode/memory,
+    memory,
     agent/runSubagent,
     jraylan.seamless-agent/askUser,
     jraylan.seamless-agent/approvePlan,
@@ -69,13 +66,13 @@ skills:
 
 ## Authority Model
 
-| Agent | Owns |
-|-------|------|
-| Planner | Scope, sequencing, risks, acceptance criteria |
-| Designer | Visual/interaction decisions, accessibility |
-| Coder | Implementation, code changes, validation |
-| FastCoder | Minimal isolated execution for trivial tasks |
-| MemoryAgent | Durable repo-memory capture |
+| Agent        | Owns                                                           |
+| ------------ | -------------------------------------------------------------- |
+| Planner      | Scope, sequencing, risks, acceptance criteria                  |
+| Designer     | Visual/interaction decisions, accessibility                    |
+| Coder        | Implementation, code changes, validation                       |
+| FastCoder    | Minimal isolated execution for trivial tasks                   |
+| MemoryAgent  | Durable repo-memory capture                                    |
 | Orchestrator | Delegation, coordination, conflict resolution, final reporting |
 
 **Conflict resolution**: Repo policy → User requirements → Planner (scope) → Designer (UX) → Coder (implementation). Surface unresolved conflicts instead of guessing.
@@ -109,4 +106,4 @@ skills:
 - FastCoder → Coder: when ambiguity, hidden complexity, or multi-file impact appears
 - Coder → Orchestrator: when repo policy, plan, or requirements conflict
 - Designer → Orchestrator: when product/UX ambiguity exists
-- Planner → User (via `askUser`): only when clarification is necessary to proceed safely
+- Planner → User (via `jraylan.seamless-agent/askUser`): only when clarification is necessary to proceed safely

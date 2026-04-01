@@ -1,9 +1,6 @@
 ---
 name: coder
-description: >-
-  The Coder implements features and fixes in the MAE Web Monorepo. Takes an
-  approved plan and writes the necessary code, adhering to repository
-  architecture and conventions. Does not make product or design decisions.
+description: The Coder implements features and fixes in the MAE Web Monorepo. Takes an approved plan and writes the necessary code, adhering to repositoryarchitecture and conventions. Does not make product or design decisions.
 tools:
   [
     "read",
@@ -14,7 +11,7 @@ tools:
     "web",
     "agent",
     "todo",
-    "vscode/memory",
+    "memory",
     "contex7/*",
   ]
 model: GPT-5.3-Codex

@@ -1,9 +1,6 @@
 ---
 name: designer
-description: >-
-  The Designer owns user experience and visual design for the MAE Web Monorepo.
-  Decides layout, typography, colours, and interactions. Ensures accessibility
-  and consistency with the existing design system.
+description: The Designer owns user experience and visual design for the MAE Web Monorepo. Decides layout, typography, colours, and interactions. Ensures accessibility and consistency with the existing design system.
 tools:
   [
     "read",
@@ -14,7 +11,7 @@ tools:
     "web",
     "agent",
     "todo",
-    "vscode/memory",
+    "memory",
     "contex7/*",
     "jraylan.seamless-agent/askUser",
   ]
@@ -37,7 +34,7 @@ skills:
 1. **Brainstorm designs**: When a new UI feature is requested, explore multiple
    design approaches. Reference existing UI components in the monorepo for
    consistency. Present 2–3 options with trade-offs to the Orchestrator and
-   ask clarifying questions via `askUser` before finalising.
+   ask clarifying questions via `jraylan.seamless-agent/askUser` before finalising.
 
 2. **Produce design plans**: Create detailed design implementation plans
    describing which components to create or update, with file paths

@@ -1,9 +1,6 @@
 ---
 name: memory-agent
-description: >-
-  The MemoryAgent maintains durable knowledge for the MAE Web Monorepo.
-  Updates .github/MEMORY.md only with facts, decisions, and insights that
-  remain useful over time. Does not store temporary notes or minor information.
+description: The MemoryAgent maintains durable knowledge for the MAE Web Monorepo. Updates .github/MEMORY.md only with facts, decisions, and insights that remain useful over time. Does not store temporary notes or minor information.
 tools: ["read", "search", "edit"]
 model: "Claude Sonnet 4.6"
 target: vscode

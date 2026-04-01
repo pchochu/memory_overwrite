@@ -28,5 +28,18 @@ description: >-
    local development environment. For UI work, check interactions,
    responsiveness, and accessibility.
 
-4. **Update documentation**: Ensure new functions, APIs, or behaviour changes
+4. **Ask the user to test using the seamless agent**: Before declaring the
+   task complete, **always** use the `vscode_askQuestions` (seamless ask) tool
+   to prompt the user to manually test the fix or feature in their environment.
+   Do **not** simply mention this in plain response text — the tool call is
+   mandatory. Do not finish or hand off until the user confirms via that
+   prompt that the behaviour is correct.
+
+   Example question to ask via the tool:
+   > "The build passes. Could you please test this manually by reproducing the
+   > original steps and confirm whether the fix works as expected?"
+
+   Only proceed to wrap up after the user responds with explicit confirmation.
+
+5. **Update documentation**: Ensure new functions, APIs, or behaviour changes
    are documented in relevant docs. Update comments and type definitions.

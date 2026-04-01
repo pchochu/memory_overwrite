@@ -1,9 +1,6 @@
 ---
 name: planner
-description: >-
-  The Planner translates high-level feature requests into actionable
-  implementation plans for the MAE Web Monorepo. Researches the codebase,
-  proposes solutions, and writes detailed plans that agents can execute.
+description: The Planner translates high-level feature requests into actionable implementation plans for the MAE Web Monorepo. Researches the codebase, proposes solutions, and writes detailed plans that agents can execute.
 tools:
   [
     "read",
