@@ -295,3 +295,31 @@ Extension Custom module
 
 Before generating code: - Check existing shared packages - Avoid
 duplication - Extend existing patterns
+
+## MEMORY.md policy
+
+`.github/MEMORY.md` is for **rare, high-value, durable repository knowledge only**.
+
+Write to `MEMORY.md` only when the information is likely to help in future work across multiple tasks or sessions, such as:
+
+- stable architectural constraints
+- non-obvious repository conventions
+- recurring bug patterns or gotchas
+- important workflow rules that should persist
+- long-lived integration caveats
+- durable design rules used repeatedly
+
+Do **not** write to `MEMORY.md` for:
+
+- per-task summaries
+- brainstorm outputs
+- temporary plans
+- implementation progress
+- PR summaries
+- review comments
+- one-off bug fixes unless they reveal a recurring pattern
+- minor decisions relevant only to a single ticket/session
+- anything that can be derived easily from code or the current PR
+
+Default to **not writing**.  
+If unsure, skip the memory update.
