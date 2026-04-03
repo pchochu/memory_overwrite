@@ -1,8 +1,6 @@
 ---
 name: subagent-driven-development
-description: >-
-  Coordinate a two-phase development cycle: spec/plan first, then implement.
-  Enforces strict separation between planning and coding.
+description: Coordinate a two-phase development cycle - spec/plan first, then implement. Enforces strict separation between planning and coding.
 ---
 
 # Subagent-Driven Development (SADD)

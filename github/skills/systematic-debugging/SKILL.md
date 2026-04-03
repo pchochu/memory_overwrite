@@ -1,7 +1,6 @@
 ---
 name: systematic-debugging
-description: >-
-  Disciplined, root-cause oriented approach to debug and fix issues.
+description: Disciplined, root-cause oriented approach to debug and fix issues.
 ---
 
 # Systematic Debugging

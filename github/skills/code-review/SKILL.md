@@ -1,8 +1,6 @@
 ---
 name: code-review
-description: >-
-  Prepare work for review and systematically process feedback.
-  Covers both requesting and receiving code reviews.
+description: Prepare work for review and systematically process feedback. Covers both requesting and receiving code reviews.
 ---
 
 # Code Review

@@ -1,8 +1,6 @@
 ---
 name: executing-plans
-description: >-
-  Execute an approved implementation plan step by step with verification
-  after each step.
+description: Execute an approved implementation plan step by step with verification after each step.
 ---
 
 # Executing Plans

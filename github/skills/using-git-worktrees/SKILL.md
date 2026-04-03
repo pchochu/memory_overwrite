@@ -1,8 +1,6 @@
 ---
 name: using-git-worktrees
-description: >-
-  Manage multiple feature branches simultaneously using git worktree for
-  parallel development.
+description: Manage multiple feature branches simultaneously using git worktree for parallel development.
 ---
 
 # Using Git Worktrees

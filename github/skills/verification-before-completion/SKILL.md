@@ -1,8 +1,6 @@
 ---
 name: verification-before-completion
-description: >-
-  Verify that the solution works across all relevant dimensions before
-  declaring a task finished.
+description: Verify that the solution works across all relevant dimensions before declaring a task finished.
 ---
 
 # Verification Before Completion
@@ -36,6 +34,7 @@ description: >-
    prompt that the behaviour is correct.
 
    Example question to ask via the tool:
+
    > "The build passes. Could you please test this manually by reproducing the
    > original steps and confirm whether the fix works as expected?"
 

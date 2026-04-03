@@ -1,7 +1,7 @@
 ---
 name: finishing-a-development-branch
-description: >-
-  Finalise work on a feature branch — build, summarise, trigger review,
+description:
+  Finalise work on a feature branch — build, summarise, trigger review, and prepare a pull request.
   and prepare a pull request.
 ---
 
