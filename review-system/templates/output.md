@@ -1,5 +1,16 @@
 # Review Output Template
 
+
+## Output Rules
+
+```markdown
+- Schema only. No preamble. No "here is". No closing summary.
+- One-line fields unless evidence needs multiple lines.
+- Do not paste code except minimal fix sketch.
+- Empty optional sections omitted; required empty sections use `None`.
+- Keep descriptions to max 2 sentences.
+```
+
 ## Header
 
 ```markdown
@@ -14,6 +25,8 @@
 - **Cross-domain items routed**: <count>
 - **Uncertainties escalated**: <count>
 - **User clarifications received**: <count>
+- **Checklist items skipped as N/A**: <count>
+- **Routed items dismissed**: <count>
 ```
 
 ## Summary
@@ -34,6 +47,22 @@
 1. <one-line summary of most critical finding>
 2. <one-line summary of second most critical finding>
 3. <one-line summary of third most critical finding>
+
+### Merge Decision
+- **Recommendation**: BLOCK|ALLOW_WITH_FIXES|ALLOW
+- **Blocking findings**: <IDs or none>
+- **Highest user/task impact**: <summary or N/A>
+- **Required validation before merge**: <commands/manual checks>
+```
+
+## Action Plan
+
+```markdown
+## Action Plan
+
+| Priority | Finding | Owner | Fix size | Must fix before merge? | Validation |
+|----------|---------|-------|----------|------------------------|------------|
+| P0|P1|P2 | <finding ID> | <team/person or TBD> | XS|S|M|L | YES|NO | <command/manual check> |
 ```
 
 ## Findings Section
@@ -48,9 +77,14 @@
 - **Evidence**:
   - `<file_path>:<line_range>`
   - `<file_path>:<line_range>`
-- **Description**: <2-3 sentences explaining the issue>
+- **Description**: <max 2 sentences explaining the issue>
 - **Impact**: <what breaks or degrades>
+- **UX severity inputs**: <frequency/task criticality/impact/persistence/affected segment/workaround, or N/A for non-user-facing findings>
 - **Recommendation**: <specific actionable fix>
+- **Acceptance criteria**: <how to know the issue is fixed>
+- **Suggested validation**: <command/manual check>
+- **Fix size**: XS|S|M|L
+- **Merge blocking**: YES|NO
 - **Cross-domain confirmation**: <if routed from another agent, note origin>
 
 ---
@@ -83,18 +117,29 @@
 ```markdown
 ## Agent Completion Status
 
-| Agent | Findings | Checklist | Cross-domain sent | Cross-domain received |
-|-------|----------|-----------|-------------------|----------------------|
-| arch | <N> | ✅ complete | <N> | <N> |
-| react-patterns | <N> | ✅ complete | <N> | <N> |
-| runtime-safety | <N> | ✅ complete | <N> | <N> |
-| dx-api | <N> | ✅ complete | <N> | <N> |
-| bundle-performance | <N> | ✅ complete | <N> | <N> |
-| state-data | <N> | ✅ complete | <N> | <N> |
-| testing | <N> | ✅ complete | <N> | <N> |
-| error-resilience | <N> | ✅ complete | <N> | <N> |
-| maintainability | <N> | ✅ complete | <N> | <N> |
-| migration-impact | <N> | ✅ complete | <N> | <N> |
+| Agent | Findings | Applicability gate | Checklist | Cross-domain sent | Cross-domain received |
+|-------|----------|--------------------|-----------|-------------------|----------------------|
+| arch | <N> | ✅ complete | ✅ complete/N/A justified | <N> | <N> |
+| react-patterns | <N> | ✅ complete | ✅ complete/N/A justified | <N> | <N> |
+| runtime-safety | <N> | ✅ complete | ✅ complete/N/A justified | <N> | <N> |
+| dx-api | <N> | ✅ complete | ✅ complete/N/A justified | <N> | <N> |
+| bundle-performance | <N> | ✅ complete | ✅ complete/N/A justified | <N> | <N> |
+| state-data | <N> | ✅ complete | ✅ complete/N/A justified | <N> | <N> |
+| testing | <N> | ✅ complete | ✅ complete/N/A justified | <N> | <N> |
+| error-resilience | <N> | ✅ complete | ✅ complete/N/A justified | <N> | <N> |
+| maintainability | <N> | ✅ complete | ✅ complete/N/A justified | <N> | <N> |
+| migration-impact | <N> | ✅ complete | ✅ complete/N/A justified | <N> | <N> |
+| ripple-effect | <N> | ✅ complete | ✅ complete/N/A justified | <N> | <N> |
+```
+
+## Routed Items Log
+
+```markdown
+## Routed Items Log
+
+| Source | Target | Routing reason | Decision | Final finding | Dismissal reason |
+|--------|--------|----------------|----------|---------------|------------------|
+| <agent finding ID> | <agent> | <reason> | CONFIRM|ADJUST|DISMISS | <finding ID or N/A> | <if dismissed> |
 ```
 
 ## Deduplication Log
@@ -112,7 +157,7 @@
 ```markdown
 ## Uncertainties & Clarifications
 
-| # | Agent | Question | User Answer | Applied to |
-|---|-------|----------|-------------|-----------|
-| 1 | <agent> | <question text> | <user answer> | <finding ID> |
+| # | Agent | Blocking? | Question | Default assumption | User Answer | Applied to |
+|---|-------|-----------|----------|--------------------|-------------|-----------|
+| 1 | <agent> | YES|NO | <question text> | <assumption if unanswered> | <user answer or N/A> | <finding ID> |
 ```
