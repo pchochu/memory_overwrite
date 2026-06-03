@@ -26,7 +26,18 @@
 
 ## Checklist
 
-The agent MUST complete all checkboxes:
+Before running checklist items, complete this applicability gate:
+
+| Gate | Applies? | Evidence / N/A rationale |
+|------|----------|--------------------------|
+| Changed files touch this agent's domain | YES|NO|PARTIAL | <file paths or reason> |
+| Public/user-facing behavior can change | YES|NO|PARTIAL | <evidence or reason> |
+| Deep checklist review is required | YES|NO|PARTIAL | <which checklist items apply> |
+
+Checklist items whose gate is NO must be marked N/A with rationale instead of treated as incomplete. Checklist items whose gate is PARTIAL must name the exact files/symbols reviewed.
+
+
+For applicable checklist items, the agent MUST complete each item. Non-applicable items must be marked N/A with rationale:
 
 - [ ] Map dependency graph between all changed packages
 - [ ] Verify no lib→app dependencies exist
@@ -61,6 +72,13 @@ The agent MUST complete all checkboxes:
 ### Dependency Graph
 <mermaid or text representation>
 
+### Applicability Gate
+| Gate | Applies? | Evidence / N/A rationale |
+|------|----------|--------------------------|
+| Domain touched | YES|NO|PARTIAL | <evidence> |
+| Public/user-facing behavior can change | YES|NO|PARTIAL | <evidence> |
+| Deep checklist review required | YES|NO|PARTIAL | <evidence> |
+
 ### Findings
 
 #### [ARCH-001] <title>
@@ -71,8 +89,24 @@ The agent MUST complete all checkboxes:
 - Impact: <what breaks or degrades>
 - Recommendation: <specific fix>
 - [CROSS-DOMAIN: <agent>] (if applicable)
+  cross_domain:
+    source_agent: <this agent codename>
+    target_agent: <agent>
+    source_finding_id: <finding ID>
+    reason: <specific technical reason>
+    requested_decision: CONFIRM|ADJUST|DISMISS
+    evidence:
+      - <file:line>
 - [UNCERTAIN: <question>] (if applicable)
+  uncertainty:
+    blocking: YES|NO
+    question: <specific answerable question>
+    default_assumption_if_unanswered: <assumption>
+    impact_if_wrong: <what would change>
+    confidence_without_answer: HIGH|MEDIUM|LOW
 
 ### Checklist Status
-- [x] or [ ] for each item above
+- [x] Completed applicable item: <item>
+- [x] N/A: <item> — <evidence-backed rationale>
+- [ ] Deferred/incomplete: <item> — <why completion is blocked>
 ```
