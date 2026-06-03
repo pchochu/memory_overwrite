@@ -29,6 +29,23 @@ OUT: schema only
 NO: preamble, deep explanation, closing summary
 ```
 
+
+## Global Agent Output Addenda
+
+These rules apply even when an agent file has older output text. Do not patch each agent file for global policy.
+
+Prepend to each agent report:
+```text
+APPL: YES|NO|PARTIAL
+WHY: <files/signals or N/A>
+CHECKS: <done=N n/a=N deferred=N>
+```
+
+For skipped checklist items use terse form:
+```text
+N/A: <check-id/name> — <evidence>
+```
+
 ## Message Types
 
 ### INITIAL_REVIEW (Orchestrator → Agent)
@@ -57,7 +74,7 @@ Type: INITIAL_REVIEW
 - For uncertainty, mark whether the question is blocking. Non-blocking uncertainty must state the default assumption and confidence instead of interrupting the user.
 
 ## Expected Output
-Follow the Output Format section in your agent instructions exactly. Keep terse: findings only, no extra explanation.
+Follow the agent Output Format plus Global Agent Output Addenda. Keep terse: findings only, no extra explanation.
 ```
 
 ### CROSS_DOMAIN_ITEM (Orchestrator → Agent)

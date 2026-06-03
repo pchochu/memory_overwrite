@@ -31,7 +31,7 @@ You are the **Review Orchestrator**. You coordinate a structured code review acr
 1. Deploy all 11 review agents in parallel.
 2. Each agent receives:
    - The Neutral Context Brief
-   - Their specific agent instruction file path plus only the relevant sections when token-constrained
+   - Their specific agent instruction file path plus only relevant sections when token-constrained; global protocol rules supply applicability/token/routing defaults
    - Access to the full repository for file inspection
    - Applicability signals and the requirement to mark each checklist item `Applicable`, `N/A`, or `Deferred` with rationale
 3. The `ripple-effect` agent additionally receives:
@@ -123,7 +123,7 @@ NO: preamble, here-is, deep explanation, closing summary
 Rules:
 - Send file paths and line ranges instead of pasted file contents when the agent has repository access.
 - Send full diff only when needed; otherwise send changed-file list, stats, and commands to inspect.
-- For repeated sections, send references (`see protocol.md#Token Budget Rules`) instead of duplicating text.
+- For repeated sections, send references (`see protocol.md#Token Budget Rules`, `see protocol.md#Global Agent Output Addenda`) instead of duplicating text.
 - Ask agents for deltas/findings only, not walkthroughs.
 - Cap non-finding prose at `None`.
 

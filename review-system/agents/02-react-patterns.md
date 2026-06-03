@@ -28,17 +28,6 @@
 
 ## Checklist
 
-Before running checklist items, complete this applicability gate:
-
-| Gate | Applies? | Evidence / N/A rationale |
-|------|----------|--------------------------|
-| Changed files touch this agent's domain | YES|NO|PARTIAL | <file paths or reason> |
-| Public/user-facing behavior can change | YES|NO|PARTIAL | <evidence or reason> |
-| Deep checklist review is required | YES|NO|PARTIAL | <which checklist items apply> |
-
-Checklist items whose gate is NO must be marked N/A with rationale instead of treated as incomplete. Checklist items whose gate is PARTIAL must name the exact files/symbols reviewed.
-
-
 - [ ] Identify all hooks called in loops, conditions, or callbacks
 - [ ] Verify all `useEffect`/`useLayoutEffect` have correct dependency arrays
 - [ ] Check all `createRoot` usages for proper unmount/cleanup
@@ -72,13 +61,6 @@ Checklist items whose gate is NO must be marked N/A with rationale instead of tr
 ```markdown
 ## React Patterns Agent Report
 
-### Applicability Gate
-| Gate | Applies? | Evidence / N/A rationale |
-|------|----------|--------------------------|
-| Domain touched | YES|NO|PARTIAL | <evidence> |
-| Public/user-facing behavior can change | YES|NO|PARTIAL | <evidence> |
-| Deep checklist review required | YES|NO|PARTIAL | <evidence> |
-
 ### Findings
 
 #### [REACT-001] <title>
@@ -89,24 +71,8 @@ Checklist items whose gate is NO must be marked N/A with rationale instead of tr
 - Failure scenario: <what specifically goes wrong>
 - Recommendation: <code sketch if applicable>
 - [CROSS-DOMAIN: <agent>] (if applicable)
-  cross_domain:
-    source_agent: <this agent codename>
-    target_agent: <agent>
-    source_finding_id: <finding ID>
-    reason: <specific technical reason>
-    requested_decision: CONFIRM|ADJUST|DISMISS
-    evidence:
-      - <file:line>
 - [UNCERTAIN: <question>] (if applicable)
-  uncertainty:
-    blocking: YES|NO
-    question: <specific answerable question>
-    default_assumption_if_unanswered: <assumption>
-    impact_if_wrong: <what would change>
-    confidence_without_answer: HIGH|MEDIUM|LOW
 
 ### Checklist Status
-- [x] Completed applicable item: <item>
-- [x] N/A: <item> — <evidence-backed rationale>
-- [ ] Deferred/incomplete: <item> — <why completion is blocked>
+- [x] or [ ] for each item above
 ```

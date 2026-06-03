@@ -37,19 +37,8 @@ This agent works DIFFERENTLY from others. It does NOT just read the diff. It:
 
 ## Checklist
 
-Before running checklist items, complete this applicability gate:
-
-| Gate | Applies? | Evidence / N/A rationale |
-|------|----------|--------------------------|
-| Changed files touch this agent's domain | YES|NO|PARTIAL | <file paths or reason> |
-| Public/user-facing behavior can change | YES|NO|PARTIAL | <evidence or reason> |
-| Deep checklist review is required | YES|NO|PARTIAL | <which checklist items apply> |
-
-Checklist items whose gate is NO must be marked N/A with rationale instead of treated as incomplete. Checklist items whose gate is PARTIAL must name the exact files/symbols reviewed.
-
-
 - [ ] List all changed PUBLIC exports (functions, types, components, constants, defaults)
-- [ ] For each changed export: search consumers across the entire monorepo with `rg` (not just diff)
+- [ ] For each changed export: grep consumers across the entire monorepo (not just diff)
 - [ ] Identify consumers NOT in the diff that depend on changed behavior
 - [ ] Check for implicit behavioral contracts (default values, callback signatures, rendering order, timing)
 - [ ] Trace shared utility changes to all transitive consumers
@@ -76,8 +65,8 @@ Checklist items whose gate is NO must be marked N/A with rationale instead of tr
    - For each changed file: identify exported symbols and their type/behavior delta
 
 2. Find all consumers (NOT in the diff):
-   - rg "from '<changed-package>" -g "*.ts" -g "*.tsx"
-   - rg "import.*<changed-symbol>" across workspace
+   - grep -r "from '<changed-package>" --include="*.ts" --include="*.tsx"
+   - grep -r "import.*<changed-symbol>" across workspace
    - Check package.json dependency graphs
 
 3. Assess each consumer:
@@ -123,13 +112,6 @@ Checklist items whose gate is NO must be marked N/A with rationale instead of tr
   → consumed by <file_3> (in diff, OK)
 ```
 
-### Applicability Gate
-| Gate | Applies? | Evidence / N/A rationale |
-|------|----------|--------------------------|
-| Domain touched | YES|NO|PARTIAL | <evidence> |
-| Public/user-facing behavior can change | YES|NO|PARTIAL | <evidence> |
-| Deep checklist review required | YES|NO|PARTIAL | <evidence> |
-
 ### Findings
 
 #### [RIPPLE-001] <title>
@@ -143,26 +125,10 @@ Checklist items whose gate is NO must be marked N/A with rationale instead of tr
 - Evidence: <proof that consumer relies on old behavior>
 - Recommendation: <update consumer / revert change / add compatibility>
 - [CROSS-DOMAIN: <agent>] (if applicable)
-  cross_domain:
-    source_agent: <this agent codename>
-    target_agent: <agent>
-    source_finding_id: <finding ID>
-    reason: <specific technical reason>
-    requested_decision: CONFIRM|ADJUST|DISMISS
-    evidence:
-      - <file:line>
 - [UNCERTAIN: <question>] (if applicable)
-  uncertainty:
-    blocking: YES|NO
-    question: <specific answerable question>
-    default_assumption_if_unanswered: <assumption>
-    impact_if_wrong: <what would change>
-    confidence_without_answer: HIGH|MEDIUM|LOW
 
 ### Checklist Status
-- [x] Completed applicable item: <item>
-- [x] N/A: <item> — <evidence-backed rationale>
-- [ ] Deferred/incomplete: <item> — <why completion is blocked>
+- [x] or [ ] for each item above
 ```
 
 ## Notes for Orchestrator
