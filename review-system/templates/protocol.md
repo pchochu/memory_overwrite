@@ -1,5 +1,51 @@
 # Agent Communication Protocol
 
+
+## Token Budget Rules
+
+Apply to every agent/orchestrator message.
+
+- Payload only. No greeting. No preamble. No "here is". No closing summary.
+- Use the required schema exactly. Do not explain the schema.
+- Short fields: one line unless evidence or code needs more.
+- Prefer IDs/enums over prose: `YES`, `NO`, `PARTIAL`, `N/A`, `CONFIRM`, `DISMISS`.
+- Omit empty optional sections. If required and empty, write `None`.
+- Do not restate instructions, checklist text, or diff content. Reference IDs/paths.
+- No markdown fences except required `yaml` metadata or code sketches.
+- Evidence format only: `<file>:<line-range>`.
+- Findings only. No compliments, no general observations, no in-depth explanation.
+
+## Terse Prompt Style
+
+Use compact imperative wording when sending prompts to agents.
+
+```text
+TYPE: INITIAL_REVIEW
+AGENT: <codename>
+CTX: <neutral brief>
+SCOPE: changed files only
+DO: gate -> checklist -> findings
+OUT: schema only
+NO: preamble, deep explanation, closing summary
+```
+
+
+## Global Agent Output Addenda
+
+These rules apply even when an agent file has older output text. Do not patch each agent file for global policy.
+
+Prepend to each agent report:
+```text
+APPL: YES|NO|PARTIAL
+WHY: <files/signals or N/A>
+CHECKS: <done=N n/a=N deferred=N>
+```
+
+For skipped checklist items use terse form:
+```text
+N/A: <check-id/name> — <evidence>
+```
+
 ## Message Types
 
 ### INITIAL_REVIEW (Orchestrator → Agent)
@@ -18,6 +64,7 @@ Type: INITIAL_REVIEW
 
 ## Constraints
 - Review ONLY the changed files (diff scope).
+- Output schema only. No preamble, no "here is", no closing summary.
 - Stay within your domain. Tag out-of-scope findings with [CROSS-DOMAIN: <target-agent>].
 - If uncertain about severity, scope, or interpretation, tag with [UNCERTAIN: <question>].
 - Complete the Applicability Gate before deep review. Run applicable checklist items; mark non-applicable items N/A with evidence-backed rationale.
@@ -27,7 +74,7 @@ Type: INITIAL_REVIEW
 - For uncertainty, mark whether the question is blocking. Non-blocking uncertainty must state the default assumption and confidence instead of interrupting the user.
 
 ## Expected Output
-Follow the Output Format section in your agent instructions exactly.
+Follow the agent Output Format plus Global Agent Output Addenda. Keep terse: findings only, no extra explanation.
 ```
 
 ### CROSS_DOMAIN_ITEM (Orchestrator → Agent)

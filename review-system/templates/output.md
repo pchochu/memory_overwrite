@@ -1,5 +1,16 @@
 # Review Output Template
 
+
+## Output Rules
+
+```markdown
+- Schema only. No preamble. No "here is". No closing summary.
+- One-line fields unless evidence needs multiple lines.
+- Do not paste code except minimal fix sketch.
+- Empty optional sections omitted; required empty sections use `None`.
+- Keep descriptions to max 2 sentences.
+```
+
 ## Header
 
 ```markdown
@@ -66,7 +77,7 @@
 - **Evidence**:
   - `<file_path>:<line_range>`
   - `<file_path>:<line_range>`
-- **Description**: <2-3 sentences explaining the issue>
+- **Description**: <max 2 sentences explaining the issue>
 - **Impact**: <what breaks or degrades>
 - **UX severity inputs**: <frequency/task criticality/impact/persistence/affected segment/workaround, or N/A for non-user-facing findings>
 - **Recommendation**: <specific actionable fix>

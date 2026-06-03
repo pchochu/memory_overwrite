@@ -85,6 +85,33 @@ This agent requires extra context from the orchestrator (workspace package list,
 6. **Severity-fit-for-purpose**: Engineering issues use technical severity; user-facing issues also use UX severity inputs: frequency, user impact, persistence, affected segment, and workaround.
 7. **Managed uncertainty**: Blocking ambiguity is escalated; non-blocking ambiguity is documented with assumptions, confidence, and fallback behavior.
 8. **Evidence-based**: Every finding must cite file:line evidence. No evidence = not a finding.
+9. **Token discipline**: Agent output is schema-only and terse: no markdown preamble, no "here is", no deep explanation, no closing summaries.
+
+
+## Token-Saving Output Rules
+
+Use these rules for every agent response:
+
+- Output only the requested schema.
+- No greeting, no markdown preamble, no `here is ...`, no closing summary.
+- Findings only; no general review essay.
+- One-line fields by default.
+- Evidence as `file:line-range`; do not paste code unless needed.
+- Empty optional section: omit it. Required empty section: `None`.
+- Use terse labels/enums: `YES`, `NO`, `N/A`, `CONFIRM`, `DISMISS`.
+- For code recommendations: code only; no explanation around the snippet.
+
+Preferred prompt style:
+
+```text
+TYPE: INITIAL_REVIEW
+AGENT: <codename>
+CTX: <brief/path refs>
+SCOPE: changed files only
+DO: gate -> checklist -> findings
+OUT: schema only
+NO: preamble, here-is, deep explanation, closing summary
+```
 
 ## Severity Levels
 
